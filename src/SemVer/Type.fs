@@ -49,12 +49,11 @@ type SemanticVersion (str: string) =
         SemanticVersion (str)
 
     static member TryParse (str: string, [<Out>] success : byref<bool>) =
-        success <- false
-
         match parse str with
         | Choice1Of2 x -> 
             success <- true
             SemanticVersion (SemVer = x)
         | _ ->
+            success <- false
             SemanticVersion ()
     
