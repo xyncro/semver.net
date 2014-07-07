@@ -1,11 +1,6 @@
 # Version
 version: 0.0.1+build.{build}
 
-# Only build master
-branches:
-  only:
-    - master
-
 # Patch AssemblyInfo.fs
 assembly_info:
   patch: true
@@ -13,19 +8,6 @@ assembly_info:
   assembly_version: "0.0.1"
   assembly_file_version: "0.0.1"
   assembly_informational_version: "{version}"
-
-# Build the main solution, publish nuget
-build:
-  project: SemVer.sln
-  publish_nuget: true
-
-# Build in AnyCPU|Release
-platform: AnyCPU
-configuration: Release
-
-# Restore nuget packages before build
-before_build:
-  - nuget restore SemVer.sln
 
 # Deploy any packages to nuget.org
 deploy:
