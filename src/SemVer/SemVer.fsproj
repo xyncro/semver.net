@@ -50,7 +50,7 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  <Import Condition="Exists('$(FSharpTargetsPath)')" Project="$(FSharpTargetsPath)" />
+  <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Internals.fs" />
