@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>SemVer</title>
+    <authors>Xyncro Ltd</authors>
+    <owners>Xyncro Ltd</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Semantic Version Type (SemVer 2.0.0) for .NET Framework</description>
+    <copyright>Copyright Xyncro Ltd 2014</copyright>
+  </metadata>
+</package>
