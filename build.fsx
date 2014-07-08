@@ -52,7 +52,7 @@ Target "Publish" (fun _ ->
               Publish = hasBuildParam "nuget_key"
               Dependencies = [ "FParsec", GetPackageVersion "./packages/" "FParsec" ]
               Files = [ "SemVer.dll", Some "lib/net45", None ] })
-              "./src/SemVer/SemVer.nuspec")
+              "./nuget/SemVer.nuspec")
 
 // Dependencies
 
