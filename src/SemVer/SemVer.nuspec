@@ -3,7 +3,7 @@
   <metadata>
     <id>@project@</id>
     <version>@build.number@</version>
-    <title>SemVer</title>
+    <title>@project@</title>
     <authors>@authors@</authors>
     <owners>@authors@</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
