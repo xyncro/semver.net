@@ -6,8 +6,11 @@
     <title>@project@</title>
     <authors>@authors@</authors>
     <owners>@authors@</owners>
+    <projectUrl>https://github.com/kolektiv/semver.net</projectUrl>
+    <licenseUrl>https://github.com/kolektiv/semver.net/blob/master/LICENSE.md</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Semantic Version Type (SemVer 2.0.0) for .NET Framework</description>
+    <tags>semver semantic version</tags>
     <copyright>Copyright Xyncro Ltd 2014</copyright>
     @dependencies@
   </metadata>
