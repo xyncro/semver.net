@@ -6,10 +6,13 @@ open Fake
 // Build
 
 Target "Build" (fun _ ->
-    !! "src/**/*.fsproj" 
-    ++ "test/**/*.fsproj"
+    !! "src/**/*.fsproj"
     |> MSBuildRelease "" "Build" 
-    |> Log "Build: ")
+    |> Log "Build Source: "
+    
+    !! "test/**/*.fsproj"
+    |> MSBuildRelease "" "Build" 
+    |> Log "Build Test: ")
 
 // Test
 
