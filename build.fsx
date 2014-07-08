@@ -13,6 +13,11 @@ let testDir = "./output/test"
 Target "Clean" (fun _ ->
     CleanDirs [ "./output" ])
 
+// Restore Packages
+
+Target "Restore" (fun _ ->
+    RestorePackages ())
+
 // Build
 
 Target "Build" (fun _ ->
@@ -36,6 +41,7 @@ Target "Test" (fun _ ->
 // Dependencies
 
 "Clean"
+    ==> "Restore"
     ==> "Build"
     ==> "Test"
 
