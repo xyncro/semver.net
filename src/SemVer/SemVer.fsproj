@@ -50,9 +50,6 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  <Message Text="VisualStudioVersion is $(VisualStudioVersion)" />
-  <Message Text="MSBuildExtensionsPath32 is $(MSBuildExtensionsPath32)" />
-  <Message Text="FSharpTargetsPath is $(FSharpTargetsPath)" />
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
