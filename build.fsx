@@ -3,15 +3,16 @@
 
 open Fake
 
-// Paths
+// Dirs
 
-let srcDir = "./output/src"
-let testDir = "./output/test"
+let outDir = "./output"
+let srcDir = outDir + "/src"
+let testDir = outDir + "/test"
 
 // Clean
 
 Target "Clean" (fun _ ->
-    CleanDirs [ "./output" ])
+    CleanDirs [ outDir ])
 
 // Restore Packages
 
@@ -34,9 +35,24 @@ Target "Build" (fun _ ->
 Target "Test" (fun _ ->
     !! (testDir + "/**/*.Tests.dll")
     |> xUnit (fun p -> 
-        { p with XmlOutput = true
-                 HtmlOutput = true
+        { p with HtmlOutput = true
                  OutputDir = testDir }))
+
+// Publish
+
+Target "Publish" (fun _ ->
+    NuGet (fun p ->
+        { p with
+              Authors = [ "Andrew Cherry" ]
+              Project = "SemVer.Net"
+              OutputPath = outDir
+              WorkingDir = srcDir
+              Version = "0.0.1-alpha"
+              AccessKey = getBuildParamOrDefault "nuget_key" ""
+              Publish = hasBuildParam "nuget_key"
+              Dependencies = [ "FParsec", GetPackageVersion "./packages/" "FParsec" ]
+              Files = [ "SemVer.dll", Some "lib/net45", None ] })
+              "./src/SemVer/SemVer.nuspec")
 
 // Dependencies
 
@@ -44,5 +60,6 @@ Target "Test" (fun _ ->
     ==> "Restore"
     ==> "Build"
     ==> "Test"
+    ==> "Publish"
 
 RunTargetOrDefault "Test"
