@@ -3,28 +3,40 @@
 
 open Fake
 
+// Paths
+
+let srcDir = "./output/src"
+let testDir = "./output/test"
+
+// Clean
+
+Target "Clean" (fun _ ->
+    CleanDirs [ "./output" ])
+
 // Build
 
 Target "Build" (fun _ ->
     !! "src/**/*.fsproj"
-    |> MSBuildRelease "" "Build" 
+    |> MSBuildRelease srcDir "Build" 
     |> Log "Build Source: "
     
     !! "test/**/*.fsproj"
-    |> MSBuildRelease "" "Build" 
+    |> MSBuildRelease testDir "Build" 
     |> Log "Build Test: ")
 
 // Test
 
 Target "Test" (fun _ ->
-    !! "test/**/bin/Release/*.Tests.dll"
+    !! (testDir + "/**/*.Tests.dll")
     |> xUnit (fun p -> 
         { p with XmlOutput = true
-                 HtmlOutput = true }))
+                 HtmlOutput = true
+                 OutputDir = testDir }))
 
 // Dependencies
 
-"Build"
+"Clean"
+    ==> "Build"
     ==> "Test"
 
 RunTargetOrDefault "Test"
