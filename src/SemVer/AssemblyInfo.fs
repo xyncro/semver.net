@@ -10,9 +10,9 @@ open System.Runtime.InteropServices
 [<assembly: AssemblyProduct("SemVer")>]
 [<assembly: AssemblyCopyright("Copyright © Xyncro Ltd 2014")>]
 [<assembly: AssemblyTrademark("")>]
-[<assembly: AssemblyVersion("1.0.0.0")>]
-[<assembly: AssemblyFileVersion("1.0.0.0")>]
-[<assembly: AssemblyInformationalVersion("1.0.0.0")>]
+[<assembly: AssemblyVersion("0.0.1")>]
+[<assembly: AssemblyFileVersion("0.0.1")>]
+[<assembly: AssemblyInformationalVersion("0.0.1")>]
 [<assembly: ComVisible(false)>]
 [<assembly: Guid("D417A8EB-EFF3-4CEC-97A6-C35C08B804B6")>]
 
