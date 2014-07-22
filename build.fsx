@@ -47,7 +47,7 @@ Target "Publish" (fun _ ->
               Project = "SemVer.Net"
               OutputPath = outDir
               WorkingDir = srcDir
-              Version = "1.0.1"
+              Version = "1.0.2"
               AccessKey = getBuildParamOrDefault "nuget_key" ""
               Publish = hasBuildParam "nuget_key"
               Dependencies = [ "FParsec", GetPackageVersion "./packages/" "FParsec" ]
