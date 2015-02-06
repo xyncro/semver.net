@@ -1,0 +1,8 @@
+source http://nuget.org/api/v2
+
+nuget FSharp.Core
+nuget Fake
+nuget Nuget.CommandLine
+nuget NUnit
+nuget FParsec
+nuget Unquote

@@ -1,6 +1,7 @@
 ﻿namespace SemVer
 
 open System
+open System.Runtime.InteropServices
 
 
 [<AutoOpen>]
@@ -127,7 +128,7 @@ module internal Compare =
             match x, y with
             | Alpha x, Alpha y -> x.CompareTo y
             | Numeric x, Numeric y -> x.CompareTo y
-            | Alpha x, _ -> 1
+            | Alpha _, _ -> 1
             | _, _ -> -1
 
         match x, y with
@@ -173,3 +174,57 @@ module internal ToString =
 
     let toString (x: SemVer) =
         sprintf "%s%s%s" (versionToS x.Version) (preReleaseToS x.PreRelease) (buildToS x.Build)
+
+
+type SemanticVersion (str: string) = 
+
+    member val internal SemVer: SemVer = parseErr str with get, set
+
+    member x.Major with get () = x.SemVer.Version.Major
+    member x.Minor with get () = x.SemVer.Version.Minor
+    member x.Patch with get () = x.SemVer.Version.Patch
+
+    interface IComparable<SemanticVersion> with
+
+        member x.CompareTo y =
+            match Object.ReferenceEquals (y, null) with
+            | true -> 1
+            | _ -> compare x.SemVer y.SemVer
+             
+    interface IComparable with
+
+        member x.CompareTo obj =
+            match obj with
+            | :? SemanticVersion as y -> (x :> IComparable<_>).CompareTo y
+            | _ -> invalidArg "obj" "not a SemanticVersion"
+
+    interface IEquatable<SemanticVersion> with
+
+        member x.Equals other =
+            (x :> IComparable<_>).CompareTo other = 0        
+
+    override x.Equals obj =
+        match obj with
+        | :? SemanticVersion as y -> (x :> IEquatable<_>).Equals y
+        | _ -> invalidArg "obj" "not a SemanticVersion"
+
+    override x.GetHashCode () =
+        hash x.SemVer
+
+    override x.ToString () =
+        toString x.SemVer
+
+    new () =
+        SemanticVersion ("0.0.0")
+    
+    static member Parse (str: string) =
+        SemanticVersion (str)
+
+    static member TryParse (str: string, [<Out>] success: byref<SemanticVersion>) =
+        match parse str with
+        | Choice1Of2 x -> 
+            success <- SemanticVersion (SemVer = x)
+            true
+        | _ ->
+            success <- SemanticVersion ()
+            false

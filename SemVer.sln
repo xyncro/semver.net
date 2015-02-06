@@ -1,24 +1,39 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SemVer", "src\SemVer\SemVer.fsproj", "{76DC9FA9-1EB2-40D5-9A99-D0E78C16AE9F}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SemVer.Tests", "test\SemVer.Tests\SemVer.Tests.fsproj", "{A9F7BA84-6813-43C2-97F8-2EDFCB78E616}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7841627D-287C-4897-B540-DA1FC1F3CAB4}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{238E3B97-CDB2-478C-8255-E6182BC0B797}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{238E3B97-CDB2-478C-8255-E6182BC0B797}"
 	ProjectSection(SolutionItems) = preProject
 		build.cmd = build.cmd
 		build.fsx = build.fsx
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{499D63F0-488B-4625-9B89-02D62C8DF5AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2FE7A87C-E4C6-40DB-BBBE-2C98A9C6D7A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8F402301-D701-4EBB-B5F7-4F8F67DA3A51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{3839B283-8901-4D9A-BD18-5A967CE97CB0}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\SemVer.nuspec = nuget\SemVer.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "paket", "paket", "{F9E6DC38-969C-44E9-AE4E-1961BDC6FF2F}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "references", "references", "{13E136F9-1332-4A35-825D-09BAB62574D8}"
+	ProjectSection(SolutionItems) = preProject
+		src\SemVer\Semver.fsproj.paket.references = src\SemVer\Semver.fsproj.paket.references
+		tests\SemVer.Tests\Semver.Tests.fsproj.paket.references = tests\SemVer.Tests\Semver.Tests.fsproj.paket.references
+	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SemVer.Tests", "tests\SemVer.Tests\SemVer.Tests.fsproj", "{656B285D-DB9B-40B0-B873-64A1F9ED3D32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,12 +45,20 @@ Global
 		{76DC9FA9-1EB2-40D5-9A99-D0E78C16AE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76DC9FA9-1EB2-40D5-9A99-D0E78C16AE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76DC9FA9-1EB2-40D5-9A99-D0E78C16AE9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9F7BA84-6813-43C2-97F8-2EDFCB78E616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9F7BA84-6813-43C2-97F8-2EDFCB78E616}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9F7BA84-6813-43C2-97F8-2EDFCB78E616}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9F7BA84-6813-43C2-97F8-2EDFCB78E616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656B285D-DB9B-40B0-B873-64A1F9ED3D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656B285D-DB9B-40B0-B873-64A1F9ED3D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656B285D-DB9B-40B0-B873-64A1F9ED3D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656B285D-DB9B-40B0-B873-64A1F9ED3D32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76DC9FA9-1EB2-40D5-9A99-D0E78C16AE9F} = {2FE7A87C-E4C6-40DB-BBBE-2C98A9C6D7A0}
+		{238E3B97-CDB2-478C-8255-E6182BC0B797} = {499D63F0-488B-4625-9B89-02D62C8DF5AD}
+		{3839B283-8901-4D9A-BD18-5A967CE97CB0} = {499D63F0-488B-4625-9B89-02D62C8DF5AD}
+		{F9E6DC38-969C-44E9-AE4E-1961BDC6FF2F} = {499D63F0-488B-4625-9B89-02D62C8DF5AD}
+		{13E136F9-1332-4A35-825D-09BAB62574D8} = {F9E6DC38-969C-44E9-AE4E-1961BDC6FF2F}
+		{656B285D-DB9B-40B0-B873-64A1F9ED3D32} = {8F402301-D701-4EBB-B5F7-4F8F67DA3A51}
 	EndGlobalSection
 EndGlobal
