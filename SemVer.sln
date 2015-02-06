@@ -29,8 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "paket", "paket", "{F9E6DC38
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "references", "references", "{13E136F9-1332-4A35-825D-09BAB62574D8}"
 	ProjectSection(SolutionItems) = preProject
-		src\SemVer\Semver.fsproj.paket.references = src\SemVer\Semver.fsproj.paket.references
-		tests\SemVer.Tests\Semver.Tests.fsproj.paket.references = tests\SemVer.Tests\Semver.Tests.fsproj.paket.references
+		src\SemVer\Semver.fsproj.paket.references = src\SemVer\SemVer.fsproj.paket.references
+		tests\SemVer.Tests\Semver.Tests.fsproj.paket.references = tests\SemVer.Tests\SemVer.Tests.fsproj.paket.references
 	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SemVer.Tests", "tests\SemVer.Tests\SemVer.Tests.fsproj", "{656B285D-DB9B-40B0-B873-64A1F9ED3D32}"
