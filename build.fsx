@@ -5,14 +5,13 @@ open Fake
 
 // Dirs
 
-let outDir = "./output"
-let srcDir = outDir + "/src"
-let testDir = outDir + "/test"
+let tempDir = "./temp"
+let srcDir = tempDir + "/src"
 
 // Clean
 
 Target "Clean" (fun _ ->
-    CleanDirs [ outDir ])
+    CleanDirs [ tempDir ])
 
 // Restore Packages
 
@@ -24,19 +23,7 @@ Target "Restore" (fun _ ->
 Target "Build" (fun _ ->
     !! "src/**/*.fsproj"
     |> MSBuildRelease srcDir "Build" 
-    |> Log "Build Source: "
-    
-    !! "test/**/*.fsproj"
-    |> MSBuildRelease testDir "Build" 
-    |> Log "Build Test: ")
-
-// Test
-
-Target "Test" (fun _ ->
-    !! (testDir + "/**/*.Tests.dll")
-    |> xUnit (fun p -> 
-        { p with HtmlOutput = true
-                 OutputDir = testDir }))
+    |> Log "Build Source: ")
 
 // Publish
 
@@ -45,13 +32,18 @@ Target "Publish" (fun _ ->
         { p with
               Authors = [ "Andrew Cherry" ]
               Project = "SemVer.Net"
-              OutputPath = outDir
+              OutputPath = tempDir
               WorkingDir = srcDir
-              Version = "1.0.2"
+              Version = "2.0.0"
               AccessKey = getBuildParamOrDefault "nuget_key" ""
               Publish = hasBuildParam "nuget_key"
-              Dependencies = [ "FParsec", GetPackageVersion "./packages/" "FParsec" ]
-              Files = [ "SemVer.dll", Some "lib/net45", None ] })
+              Dependencies =
+                [ "FParsec", GetPackageVersion "packages" "FParsec"
+                  "FSharp.Core", GetPackageVersion "packages" "FSharp.Core" ]
+              Files = 
+                [ "SemVer.dll", Some "lib/net40", None
+                  "SemVer.pdb", Some "lib/net40", None
+                  "SemVer.xml", Some "lib/net40", None ] })
               "./nuget/SemVer.nuspec")
 
 // Dependencies
@@ -59,7 +51,6 @@ Target "Publish" (fun _ ->
 "Clean"
     ==> "Restore"
     ==> "Build"
-    ==> "Test"
     ==> "Publish"
 
-RunTargetOrDefault "Test"
+RunTargetOrDefault "Publish"
