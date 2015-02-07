@@ -13,11 +13,6 @@ let srcDir = tempDir + "/src"
 Target "Clean" (fun _ ->
     CleanDirs [ tempDir ])
 
-// Restore Packages
-
-Target "Restore" (fun _ ->
-    RestorePackages ())
-
 // Build
 
 Target "Build" (fun _ ->
@@ -41,15 +36,12 @@ Target "Publish" (fun _ ->
                 [ "FParsec", GetPackageVersion "packages" "FParsec"
                   "FSharp.Core", GetPackageVersion "packages" "FSharp.Core" ]
               Files = 
-                [ "SemVer.dll", Some "lib/net40", None
-                  "SemVer.pdb", Some "lib/net40", None
-                  "SemVer.xml", Some "lib/net40", None ] })
+                [ "SemVer.dll", Some "lib/net40", None ] })
               "./nuget/SemVer.nuspec")
 
 // Dependencies
 
 "Clean"
-    ==> "Restore"
     ==> "Build"
     ==> "Publish"
 
