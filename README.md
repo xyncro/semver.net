@@ -1,6 +1,6 @@
 # SemVer.Net
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kwxecncch8ykjjw8)](https://ci.appveyor.com/project/kolektiv/semver-net)
+[![Build](https://ci.appveyor.com/api/projects/status/w3qk1fq1uy5tqrr2?svg=true)](https://ci.appveyor.com/project/xyncro/semver-net)
 
 A SemVer 2.0.0 compliant SemanticVersion Type for .NET...
 
